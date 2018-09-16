@@ -60,6 +60,18 @@ that same name. Some additional values are always available:
 
 - ``CATALOG_DIR``: The full path to the directory containing the YAML catalog file.  This is especially useful
   for constructing paths relative to the catalog directory to locate data files and custom plugins.
+  
+Catalog Specifications
+''''''''''''''''''''''
+
+Catalog files consist of both required and optional information. Each catalog file must have a ``version`` listed in the
+``metadata`` section. In addition, each data source entry must contain the following information (see further sections 
+for more detailed explanations):
+
+- ``name``: The "key" of the block according to YAML formatting.
+- ``description``: May be an empty string if no description is available.
+- ``driver``: The name of the plugin required to read the data, formatted as a string. The plugin must be known to the system.
+- ``args``: Any arguments required by the plugin, as described in the plugin's docstring.
 
 Metadata
 ''''''''
@@ -86,7 +98,7 @@ file:
       ...
 
 
-The following import methods are allow:
+The following import methods are allowed:
 
 - ``- module: my.module.path``: The Python module to import and search for plugin classes.  This uses the standard
   notation of the Python ``import`` command and will search the PYTHONPATH in the same way.
